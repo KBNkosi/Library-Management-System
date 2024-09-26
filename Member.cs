@@ -2,8 +2,9 @@ namespace LibrarySystemManagement;
 
 public class Member : User
 {
-    private Library _library;
-    public Member(int id, string name, string email, string password, Library library) : base(id, name, email, password)
+    private readonly Library _library;
+    
+    public Member(int id, string name, string role, Library library) : base(id, name, role)
     {
        _library=library;
     }
@@ -11,32 +12,51 @@ public class Member : User
     //Method to borrow a book
     public bool BorrowBook(Book book)
     {
-        if (book.IsBorrowed)
+        if (_library.TryBorrowBook(book))
         {
-            Console.WriteLine("Book is currently borrowed");
-            return false;
+            Console.WriteLine($"Book '{book.Title}' is successfully borrowed");
+            return true;
         }
         else
         {
-            book.IsBorrowed = true;
-            _library.BorrowedBooks.Add(book);
-            Console.WriteLine($"Book '{book.Title}' has been successfully borrowed");
-            return true;
+            Console.WriteLine($"Book '{book.Title}' is already borrowed");
+            return false;
         }
+       
+    }
+
+    //Method to display Borrowed Books
+    public void DisplayBorrowedBooks()
+    {
+        lock (_library)
+        {
+            if (_library.BorrowedBooks.Count == 0)
+            {
+                Console.WriteLine("There are no borrowed books");
+                return;
+            }
+
+            Console.WriteLine($"Borrowed books are:");
+            foreach (var book in _library.BorrowedBooks)
+            {
+                    Console.WriteLine(book.Title);
+                }
+            
+        }
+       
     }
     
     //Method to return a book
     public bool ReturnBook(Book book)
     {
-        if (_library.BorrowedBooks.Contains(book))
+        if (_library.TryReturnBook(book))
         {
-            book.IsBorrowed = false;
-            _library.BorrowedBooks.Remove(book);
+            Console.WriteLine($"Book '{book.Title}' is successfully returned");
             return true;
         }
         else
         {
-            Console.WriteLine($"Book '{book.Title}' is not borrowed");
+            Console.WriteLine($"Book '{book.Title}' is not borrowed by this member");
             return false;
         }
     }

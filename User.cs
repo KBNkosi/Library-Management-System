@@ -1,25 +1,28 @@
+using Console = System.Console;
+
 namespace LibrarySystemManagement;
 
 public abstract class User
 {
     //Initializing variables
-    private int Id{get; set;}
-    private string Name{get; set;}
-    private string Email{get; set;}
-    public string Password{get; set;}
+    public int Id{get; set;}
+    public string Name{get; set;}
+    public string Role{get; set;}
     
     //Constructor
-    protected User(int id, string name, string email, string password)
+    protected User(int id, string name, string role)
     {
         Id = id;
         Name = name;
-        Email= email;
-        Password = password;
+        Role=role;
     }
 
     //Method to display user information
     public virtual void DisplayUserInfo()
     {
-        Console.WriteLine($"Id: {Id}, Name: {Name}, Email: {Email}");
+        Console.WriteLine($"Id: {Id}, Name: {Name}, Role: {Role}");
+        
     }
+    
+    
 }

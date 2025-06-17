@@ -6,7 +6,17 @@ public class Member : User
     
     public Member(int id, string name, string role, Library library) : base(id, name, role)
     {
-       _library=library;
+       _library=library ?? throw new ArgumentNullException(nameof(library));
+       _library.OverdueBooksEvent += HandleOverdueBooksEvent;
+    }
+    
+    private void HandleOverdueBooksEvent(object sender, OverdueBooksEventArgs e)
+    {
+        Console.WriteLine($"Notification for {Name}: The following books are overdue:");
+        foreach (var book in e.OverdueBooks)
+        {
+            Console.WriteLine($"- {book.Title} by {book.Author}");
+        }
     }
     
     //Method to borrow a book

@@ -12,8 +12,36 @@ public class Library
     
     //Lock object for thread-safety
     private readonly object _lockObj = new object(); 
-   
     
+    public delegate void OverdueBooksEventHandler(object sender, OverdueBooksEventArgs e);
+    public event OverdueBooksEventHandler OverdueBooksEvent;
+    protected virtual void OnOverdueBooks
+    (OverdueBooksEventArgs e)
+    {
+        OverdueBooksEvent?.Invoke(this, e);
+    }
+    
+   
+    public void CheckForOverdueBooks()
+    {
+        lock (_lockObj)
+        {
+            var overdueBooks = new List<Book>();
+            foreach (var book in BorrowedBooks)
+            {
+                if (book.IsOverdue())
+                {
+                    overdueBooks.Add(book);
+                }
+            }
+
+            if (overdueBooks.Count > 0)
+            {
+                var args = new OverdueBooksEventArgs(overdueBooks);
+                OnOverdueBooks(args);
+            }
+        }
+    }
     
     //Constructor
     public Library()
@@ -148,5 +176,16 @@ public class Library
             }");
         }
 
-    } //Method to
+    } 
 }
+
+public class OverdueBooksEventArgs : EventArgs
+{
+    public List<Book> OverdueBooks { get; }
+
+    public OverdueBooksEventArgs(List<Book> overdueBooks)
+    {
+        OverdueBooks = overdueBooks ?? throw new ArgumentNullException(nameof(overdueBooks));
+    }
+}
+

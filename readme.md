@@ -1,6 +1,10 @@
 # Library System Management
 
-A modern library management system built with .NET 7.0 that helps manage books, users, and library operations efficiently.
+## 📘 Archived Learning Project
+
+This console-based application was developed in C# during my university studies as part of learning object-oriented programming and system design fundamentals.
+
+The project simulates a basic library system with features for managing books, users, and borrowing operations.
 
 ## Features
 
@@ -23,6 +27,13 @@ A modern library management system built with .NET 7.0 that helps manage books, 
 - **Framework**: .NET 7.0
 - **Language**: C# 11.0
 - **Project Type**: Console Application
+
+## 🧠 What This Project Demonstrates
+
+- Object-Oriented Programming (OOP) principles
+- Class design and inheritance
+- Separation of responsibilities across entities
+- Basic system modeling and logic implementation
 
 ## Project Structure
 
@@ -62,6 +73,22 @@ cd <project-directory>
 3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
+
+# ⚠️ Status
+
+This project is **archived and not actively maintained**.
+
+It is kept as a reference to demonstrate my foundational programming skills and early experience with system design.
+
+---
+
+## 🚀 Current Focus
+
+I am currently focused on building modern backend systems using:
+- FastAPI
+- PostgreSQL
+- RESTful APIs
+- Scalable architecture patterns
 
 ## License
 

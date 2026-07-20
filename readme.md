@@ -1,99 +1,137 @@
-# Library System Management
+# Library Management System
 
-## 📘 Archived Learning Project
+A library management application designed to support the day-to-day operations of a library by managing books, members, and borrowing workflows.
 
-This console-based application was developed in C# during my university studies as part of learning object-oriented programming and system design fundamentals.
+The system provides role-based access for administrators, librarians, and members, enabling efficient management of library resources and user activities.
 
-The project simulates a basic library system with features for managing books, users, and borrowing operations.
+## Problem
 
-## Features
+Managing library resources manually can make it difficult to track inventory, monitor borrowing activity, and manage different user responsibilities.
 
-- Book Management
-  - Add, update, and remove books from the library inventory
-  - Track book availability and status
+This application centralizes core library operations, allowing staff to manage books, oversee member activity, and process borrowing and return transactions through a structured system.
 
-- User Management
-  - Support for different user roles (Admin, Librarian, Member)
-  - User authentication and authorization
-  - Member management and tracking
+## Solution
 
-- Library Operations
-  - Book borrowing and returns
-  - Library resource management
-  - User activity tracking
+The system provides:
 
-## Technical Details
+### Book Management
 
-- **Framework**: .NET 7.0
-- **Language**: C# 11.0
-- **Project Type**: Console Application
+- Add new books to the library inventory
+- Update existing book information
+- Remove books from the catalog
+- Track availability and borrowing status
 
-## 🧠 What This Project Demonstrates
+### User Management
 
-- Object-Oriented Programming (OOP) principles
-- Class design and inheritance
+- Support for multiple user roles:
+  - Administrator
+  - Librarian
+  - Member
+- User authentication and authorization
+- Member record management
+
+### Borrowing Workflows
+
+- Book checkout and return processing
+- Resource availability tracking
+- User activity monitoring
+
+## Key Capabilities
+
+- Role-based access control
+- Inventory management
+- Borrowing and return workflows
+- User account management
+- Library resource tracking
+
+## Architecture
+
+The application is structured around distinct domain entities and responsibilities:
+
+| Component | Responsibility |
+|------------|---------------|
+| Book | Represents library inventory and availability |
+| User | Base user model and shared functionality |
+| Admin | Administrative operations |
+| Librarian | Library management operations |
+| Member | Borrowing and account-related activities |
+| Library | Core business logic and workflow management |
+
+## Technologies
+
+- C#
+- .NET 7
+- Object-Oriented Programming (OOP)
+
+## Technical Highlights
+
+- Object-oriented domain modeling
 - Separation of responsibilities across entities
-- Basic system modeling and logic implementation
+- Role-based permission structure
+- Business logic encapsulation
+- Reusable class hierarchy through inheritance
 
 ## Project Structure
 
-The project consists of several key components:
-
-- `Book.cs` - Defines the book entity and related operations
-- `User.cs` - Base user class implementation
-- `Admin.cs` - Administrative user role implementation
-- `Member.cs` - Library member role implementation
-- `Librarian.cs` - Librarian role implementation
-- `Library.cs` - Core library management functionality
+```text
+├── Book.cs
+├── User.cs
+├── Admin.cs
+├── Member.cs
+├── Librarian.cs
+└── Library.cs
+```
 
 ## Getting Started
 
 ### Prerequisites
 
-- .NET 7.0 SDK or later
-- Any IDE that supports .NET development (recommended: Visual Studio 2022, JetBrains Rider)
+- .NET 7 SDK or later
+- Visual Studio 2022, JetBrains Rider, or another .NET-compatible IDE
 
 ### Installation
 
-1. Clone the repository:
+Clone the repository:
+
 ```bash
 git clone <repository-url>
 ```
-2. Navigate to the project directory:
+
+Navigate to the project directory:
+
 ```bash
 cd <project-directory>
 ```
-3. Build the project:
-4. Run the application:
 
-## Contributing
+Build the project:
 
-1. Fork the project
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+```bash
+dotnet build
+```
 
-# ⚠️ Status
+Run the application:
 
-This project is **archived and not actively maintained**.
+```bash
+dotnet run
+```
 
-It is kept as a reference to demonstrate my foundational programming skills and early experience with system design.
+## Project Status
 
----
+Archived project maintained as part of my software development portfolio.
 
-## 🚀 Current Focus
+This project represents an early implementation of resource management workflows and role-based system design concepts that continue to influence my approach to building business applications and workflow-driven systems.
 
-I am currently focused on building modern backend systems using:
-- FastAPI
-- PostgreSQL
-- RESTful APIs
-- Scalable architecture patterns
+## Future Enhancements
+
+Potential improvements include:
+
+- Database persistence
+- Search and filtering functionality
+- Reporting and analytics
+- Web-based interface
+- REST API integration
+- Notification workflows
 
 ## License
 
-This project is licensed under the MIT License—see the LICENSE file for details
-
-## Support
-
-For support, please open an issue in the project repository.
+This project is licensed under the MIT License. See the `LICENSE` file for details.
